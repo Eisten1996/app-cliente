@@ -6,8 +6,8 @@ import {Cliente} from './cliente';
   templateUrl: './from.component.html'
 })
 export class FromComponent implements OnInit {
-  private titulo = 'Crear Cliente';
-  private cliente: Cliente = new Cliente();
+  public titulo = 'Crear Cliente';
+  public cliente: Cliente = new Cliente();
 
   constructor() {
   }
