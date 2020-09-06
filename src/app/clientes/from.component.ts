@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Cliente} from './cliente';
 import {ClienteService} from './cliente.service';
 import {Router} from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-from',
@@ -18,7 +19,10 @@ export class FromComponent implements OnInit {
   }
 
   public create(): void {
-    this.clienteService.createCliente(this.cliente).subscribe(value => this.router.navigate(['/clientes']));
+    this.clienteService.createCliente(this.cliente).subscribe(cliente => {
+      Swal.fire('Nuevo cliente', `Cliente ${cliente.nombre} creado con exito`, `success`);
+      return this.router.navigate(['/clientes']);
+    });
   }
 
 }
