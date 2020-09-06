@@ -31,7 +31,14 @@ export class FromComponent implements OnInit {
   create(): void {
     this.clienteService.createCliente(this.cliente).subscribe(cliente => {
       Swal.fire('Nuevo cliente', `Cliente ${cliente.nombre} creado con exito`, `success`);
-      return this.router.navigate(['/clientes']);
+      this.router.navigate(['/clientes']);
+    });
+  }
+
+  update(): void {
+    this.clienteService.updateCliente(this.cliente).subscribe(cliente => {
+      Swal.fire('Cliente Actualizado', `Cliente ${cliente.nombre} actualizado con exito`, `success`);
+      this.router.navigate(['/clientes']);
     });
   }
 
