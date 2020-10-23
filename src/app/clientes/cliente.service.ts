@@ -29,6 +29,7 @@ export class ClienteService {
       map((response: any) => response.cliente as Cliente),
       catchError(e => {
         if (e.status === 400) {
+          console.log(e);
           return throwError(e);
         }
         console.error(e.error.mensaje);
