@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
+import Swal from 'sweetalert2';
+import {tap} from 'rxjs/operators';
+
 import {Cliente} from './cliente';
 import {ClienteService} from './cliente.service';
-import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-clientes',
@@ -15,9 +18,10 @@ export class ClientesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clienteService.getClientes().subscribe(value => {
-      this.clientes = value;
-    });
+    this.clienteService.getClientes().pipe(tap(clientes => {
+      this.clientes = clientes;
+    }))
+      .subscribe();
   }
 
 
